@@ -76,7 +76,7 @@ test('getComponentFiles', async () => {
     short: 'App',
     value: join(__dirname, 'fixtures/create-react-app/src/App.js'),
   }, {
-    name: expect.stringMatching(/Button/),
+    name: expect.stringMatching(/PageTemplate/),
     short: 'Button',
     value: join(__dirname, 'fixtures/create-react-app/src/components/Button/Button.js'),
   }])
@@ -84,16 +84,16 @@ test('getComponentFiles', async () => {
 
 test('replaceContents', () => {
   const contents = `
-    import './Button.css'
+    import './PageTemplate.css'
     import ButtonComponent from '../ButtonComponent'
     import NodeButtonComponent from 'node-button-component'
     import NodeYellowButtonComponent from 'node-component/YellowButton'
     import SimpleButton from './SimpleButton'
     import { someButtonUtil } from './SimpleButtonUtils'
     import { someButtonUtil } from "./SimpleButtonUtils";
-    const Button = () => <button />
+    const PageTemplate = () => <button />
     export const someButtonUtil = () => {}
-    export default Button
+    export default PageTemplate
   `
 
   expect(replaceContents(contents, 'Button', 'AnotherButton')).toBe(`

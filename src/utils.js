@@ -70,6 +70,15 @@ export const replaceContents = (
   `$1$3${newName}$2$4`
 )
 
+const removeJSDoc = filePath=>{
+  let content = readFileSync(filePath).toString()
+  if(/\.(?!test\.)js/.test(filePath)){
+    const jsDocRegex=/\/\*\*\s*\n([^\*]|(\*(?!\/)))*\*\/\n*/
+    content = content.replace(jsDocRegex,'')
+  }
+  return content
+}
+
 export const replicate = async (
   originalPath: string,
   answers: { name: string, folder: string },
@@ -87,7 +96,7 @@ export const replicate = async (
       const filename = basename(file).replace(originalName, answers.name)
       const destinationPath = join(workingDir, answers.folder, filename)
       const promise = copy(file, destinationPath).then(() => {
-        const contents = readFileSync(destinationPath).toString()
+        const contents = removeJSDoc(destinationPath)
         writeFileSync(destinationPath, replaceContents(contents, originalName, answers.name))
       })
       promises.push(promise)
@@ -98,7 +107,7 @@ export const replicate = async (
     const files = getFiles(destinationPath)
 
     files.forEach((file) => {
-      const contents = readFileSync(file).toString()
+      const contents = removeJSDoc(file)
       const renamedPath = join(dirname(file), basename(file).replace(originalName, answers.name))
       writeFileSync(file, replaceContents(contents, originalName, answers.name))
       const promise = move(file, renamedPath)

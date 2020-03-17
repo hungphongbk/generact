@@ -1,4 +1,4 @@
-## Button Component
+## PageTemplate Component
 
 An enhanced version of the standard HTML `<button>` element styled with [Material Design
 Lite](https://getmdl.io) (MDL).
@@ -9,9 +9,9 @@ Lite](https://getmdl.io) (MDL).
 ### Example
 
 ```js
-<Button primary={true}>Save</Button>
-<Button>Cancel</Button>
-<Button to="/some/page">View</Button>
+<PageTemplate primary={true}>Save</PageTemplate>
+<PageTemplate>Cancel</PageTemplate>
+<PageTemplate to="/some/page">View</PageTemplate>
 ```
 
 ### Options

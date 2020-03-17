@@ -49,7 +49,7 @@ or [ProductHunt](https://www.producthunt.com/tech/react-static-boilerplate) &nbs
 
 ```shell
 ├── components/                 # Shared or generic UI components
-│   ├── Button/                 # Button component
+│   ├── PageTemplate/                 # PageTemplate component
 │   ├── Layout/                 # Website layout component
 │   ├── Link/                   # Link component to be used instead of <a>
 │   └── ...                     # etc.

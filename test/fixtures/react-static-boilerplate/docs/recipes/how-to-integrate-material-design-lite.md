@@ -67,16 +67,16 @@ MDL [source code](https://github.com/google/material-design-lite/tree/mdl-1.x/sr
 component mounts into the DOM, it need to notify MDL runtime that the underlying DOM elements can be
 directly manipulated by MDL; likewise right before the React component is being removed from the DOM
 it needs to notify MDL so it could do proper clean up. MDL provides `upgradeElement(node)` and
-`downgradeElements(nodes)` API methods for that. For example, to implement a [Button](../../components/Button)
+`downgradeElements(nodes)` API methods for that. For example, to implement a [PageTemplate](../../components/Button)
 component you would write code similar to this:
 
-#### `components/Button/Button.js`
+#### `components/PageTemplate/PageTemplate.js`
 
 ```js
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
-class Button extends React.Component {
+class PageTemplate extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
@@ -110,19 +110,19 @@ class Button extends React.Component {
 
 }
 
-export default Button;
+export default PageTemplate;
 ```
 
 #### Usage Example:
 
 ```js
-import Button from './components/Button';
+import PageTemplate from './components/PageTemplate';
 
 function MyComponent() {
   return (
     <div>
-      <Button primary={true}>Save</Button>
-      <Button>Cancel</Button>
+      <PageTemplate primary={true}>Save</PageTemplate>
+      <PageTemplate>Cancel</PageTemplate>
     </div>
   );
 }

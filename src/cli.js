@@ -13,6 +13,7 @@ import {
   getComponentFiles,
   replicate,
 } from './utils'
+import JSDOCParser from 'comment-parser'
 
 const cli = meow(`
   Usage
@@ -28,6 +29,18 @@ const cli = meow(`
 `)
 
 const performReplication = async (path) => {
+  /**
+   * Get JSDoc tags inside path
+   */
+  const getJSDoc = await new Promise((res,rej)=>{
+    JSDOCParser.file(path,(err,parse)=>{
+      if(err) rej(err)
+      else res(parse[0]?.tags[0])
+    })
+  })
+
+  console.log(getJSDoc)
+
   const originalName = getComponentName(path)
   const absolutePath = isAbsolute(path) ? path : join(process.cwd(), path)
   const relativePath = relative(process.cwd(), absolutePath)
@@ -35,7 +48,7 @@ const performReplication = async (path) => {
 
   const answers = await inquirer.prompt([
     name(originalName),
-    folder(originalFolder),
+    folder(getJSDoc?.name||originalFolder),
   ])
 
   replicate(path, answers)

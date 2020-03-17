@@ -1,12 +1,11 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "node": 6
       }
-    }],
-    "stage-2"
+    }]
   ],
-  "plugins": ["transform-flow-strip-types"],
+  "plugins": ["transform-flow-strip-types","@babel/plugin-proposal-optional-chaining"],
   "sourceMaps": "inline"
 }
