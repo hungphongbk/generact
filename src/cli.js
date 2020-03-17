@@ -39,7 +39,7 @@ const performReplication = async (path) => {
     })
   })
 
-  console.log(getJSDoc)
+  // console.log(getJSDoc)
 
   const originalName = getComponentName(path)
   const absolutePath = isAbsolute(path) ? path : join(process.cwd(), path)
@@ -50,6 +50,7 @@ const performReplication = async (path) => {
     name(originalName),
     folder(getJSDoc?.name||originalFolder),
   ])
+  console.log(answers)
 
   replicate(path, answers)
 }

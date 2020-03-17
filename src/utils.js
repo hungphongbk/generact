@@ -105,7 +105,7 @@ export const replicate = async (
     const destinationPath = join(workingDir, answers.folder, answers.name)
     await copy(dirname(absolutePath), destinationPath)
     const files = getFiles(destinationPath)
-
+    console.log(files)
     files.forEach((file) => {
       const contents = removeJSDoc(file)
       const renamedPath = join(dirname(file), basename(file).replace(originalName, answers.name))
