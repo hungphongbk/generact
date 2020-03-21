@@ -80,7 +80,8 @@
     "list-react-files": "^0.2.0",
     "lodash": "^4.17.4",
     "meow": "^3.7.0",
-    "ora": "^1.2.0"
+    "ora": "^1.2.0",
+    "prettier": "^1.19.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
